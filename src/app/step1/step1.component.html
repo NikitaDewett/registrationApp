@@ -1,8 +1,8 @@
 <div class="container">
   <form novalidate [formGroup]="user" (ngSubmit)="onSubmit(user)">
     <div class="form-group ">
-      <label for="email">Fist Name:</label>
-      <input type="text" name="firstName" class="form-control " placeholder="Your Fist Name" id="email" formControlName="firstName">
+      <label>Fist Name:</label>
+      <input type="text" name="firstName" class="form-control " placeholder="Your Fist Name" formControlName="firstName">
       <div class="alert alert-danger" *ngIf="user.get('firstName').hasError('required') && user.get('firstName').touched">
         First Name is required
       </div>
@@ -12,8 +12,8 @@
     </div>
 
     <div class="form-group">
-      <label for="pwd">Second Name:</label>
-      <input type="text" name="secondName" class="form-control" placeholder="Your Fist Name" formControlName="lastName">
+      <label>Second Name:</label>
+      <input type="text" name="secondName" class="form-control" placeholder="Your Second Name" formControlName="lastName">
       <div class="alert alert-danger" *ngIf="user.get('lastName').hasError('required') && user.get('lastName').touched">
         Last Name is required
       </div>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="form-group">
-      <label for="pwd">Email:</label>
+      <label>Email:</label>
       <input type="email" name="email" class="form-control" placeholder="Your Email" formControlName="email">
       <div class="alert alert-danger" *ngIf="user.get('email').hasError('required') && user.get('email').touched">
         Email is required
@@ -34,7 +34,7 @@
     </div>
 
     <div class="form-group">
-      <label for="pwd">Password:</label>
+      <label>Password:</label>
       <input type="password" name="password" class="form-control" placeholder="Your Password" formControlName="password">
       <div class="alert alert-danger" *ngIf="user.get('password').hasError('required') && user.get('password').touched">
         Password is required
@@ -45,7 +45,7 @@
     </div>
 
     <div class="form-group">
-      <label for="pwd">Confirm Password:</label>
+      <label>Confirm Password:</label>
       <input type="password" name="confirmPassword" class="form-control" placeholder="Type Your Password again" formControlName="confirmPassword">
       <div class="alert alert-danger" *ngIf="user.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
     </div>
