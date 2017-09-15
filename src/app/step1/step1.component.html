@@ -24,7 +24,7 @@
 
     <div class="form-group">
       <label for="pwd">Email:</label>
-      <input type="" class="form-control" placeholder="Your Second Name" id="pwd" formControlName="email">
+      <input type="" class="form-control" placeholder="Your Email" id="pwd" formControlName="email">
       <div class="alert alert-danger" *ngIf="user.get('email').hasError('required') && user.get('email').touched">
         Email is required
       </div>

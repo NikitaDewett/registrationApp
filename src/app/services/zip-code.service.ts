@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class ZipCodeService {
-  private apiKey = 'P2swOcVKjHmRgpnm2tprM97XoXw1KJfzLI6zU2jdKG505tm8WMzJWHGkFcmpWBZH'
+  private apiKey = 'js-veuMbQOGsXl82rUGIXaZa2f4SQvLZEUvTph4f6LI36Q6yLMhIXgTZwYSntDm8xR1'
   public url = 'https://www.zipcodeapi.com/rest/'
 
   constructor(public http: Http) { }
@@ -15,7 +16,7 @@ export class ZipCodeService {
   */
   makeRequest(zipCode) {
     return this.http.get(this.url + this.apiKey + "/info.json/" + zipCode).map((res: Response) => res.json())
-
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
 }

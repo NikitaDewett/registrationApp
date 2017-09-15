@@ -14,8 +14,9 @@ import { ZipCodeService } from '../services/zip-code.service';
 })
 
 export class Step2Component implements OnInit {
-  user: FormGroup;
-  postalCode;
+  public user: FormGroup;
+  public postalCode;
+  public errorModal: boolean;
 
   constructor(public dataService: DataService, public router: Router, public fb: FormBuilder, public zipService: ZipCodeService) { }
 
@@ -29,13 +30,19 @@ export class Step2Component implements OnInit {
     this.postalCode.valueChanges.subscribe(
       (value: string) => {
         if (!this.user.get('postalCode').hasError('pattern') && this.user.get('postalCode').value != undefined && this.user.get('postalCode').value != '') {
+          this.errorModal = false
           this.zipService.makeRequest(value).subscribe((data) => {
-            console.log(data);
             this.user.patchValue({
               state: data.state,
               city: data.city,
             });
-          })
+          }, err => {
+            this.user.patchValue({
+              state: "",
+              city: "",
+            });
+            this.errorModal = true;
+          });
         }
       }
     );
