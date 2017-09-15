@@ -1,0 +1,55 @@
+<div class="container">
+  <form novalidate [formGroup]="user" (ngSubmit)="onSubmit(user)">
+    <div class="form-group ">
+      <label for="email">Fist Name:</label>
+      <input type="" class="form-control " placeholder="Your Fist Name" id="email" formControlName="firstName">
+      <div class="alert alert-danger" *ngIf="user.get('firstName').hasError('required') && user.get('firstName').touched">
+        First Name is required
+      </div>
+      <div class="alert alert-danger" *ngIf="user.get('firstName').hasError('minlength') && user.get('firstName').touched">
+        Minimum of 2 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Second Name:</label>
+      <input type="" class="form-control" placeholder="Your Fist Name" id="pwd" formControlName="lastName">
+      <div class="alert alert-danger" *ngIf="user.get('lastName').hasError('required') && user.get('lastName').touched">
+        Last Name is required
+      </div>
+      <div class="alert alert-danger" *ngIf="user.get('lastName').hasError('minlength') && user.get('lastName').touched">
+        Minimum of 2 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Email:</label>
+      <input type="" class="form-control" placeholder="Your Second Name" id="pwd" formControlName="email">
+      <div class="alert alert-danger" *ngIf="user.get('email').hasError('required') && user.get('email').touched">
+        Email is required
+      </div>
+      <div class="alert alert-danger" *ngIf="user.get('email').hasError('email') && user.get('email').touched">
+        Input valid Email
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" placeholder="Your Password" id="pwd" formControlName="password">
+      <div class="alert alert-danger" *ngIf="user.get('password').hasError('required') && user.get('password').touched">
+        Password is required
+      </div>
+      <div class="alert alert-danger" *ngIf="user.get('password').hasError('minlength') && user.get('password').touched">
+        Minimum of 4 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Confirm Password:</label>
+      <input type="password" class="form-control" placeholder="Type Your Password again" id="pwd" formControlName="confirmPassword">
+      <div class="alert alert-danger" *ngIf="user.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
+    </div>
+
+    <button type="submit" class="btn btn-default" style="float:right" [disabled]="user.invalid">Submit</button>
+  </form>
+</div>
