@@ -2,7 +2,7 @@
   <form novalidate [formGroup]="user" (ngSubmit)="onSubmit(user)">
     <div class="form-group">
       <label for="email">State:</label>
-      <input type="email" class="form-control" placeholder="Your State" id="email" formControlName="state">
+      <input type="email" name="state" class="form-control" placeholder="Your State" id="email" formControlName="state">
       <div class="alert alert-danger" *ngIf="user.get('state').hasError('minlength') && user.get('state').touched">
         Minimum of 2 characters
       </div>
@@ -10,7 +10,7 @@
 
     <div class="form-group">
       <label for="pwd">City:</label>
-      <input type="" class="form-control" placeholder="Your City" id="pwd" formControlName="city">
+      <input type="text" name="city" class="form-control" placeholder="Your City"  formControlName="city">
       <div class="alert alert-danger" *ngIf="user.get('city').hasError('minlength') && user.get('city').touched">
         Minimum of 2 characters
       </div>
@@ -18,7 +18,7 @@
 
     <div class="form-group">
       <label for="pwd">Postal Code:</label>
-      <input #term type="" class="form-control" id="pwd" placeholder="Your Postal Code" formControlName="postalCode">
+      <input #term type="text" name="postalCode" class="form-control"  placeholder="Your Postal Code" formControlName="postalCode">
       <div class="alert alert-danger" *ngIf="user.get('postalCode').hasError('pattern') && user.get('postalCode').touched">
         Enter Valid postal code
       </div>
